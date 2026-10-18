@@ -4,113 +4,247 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>AuxoIQ with Nicole</title>
-<meta name="description" content="AuxoIQ with Nicole answers your calls, greets people by name, takes a clear message, and sends it straight to your phone.">
-<meta name="theme-color" content="#111a2e">
+<meta name="description" content="AuxoIQ with Nicole answers when you can't, knows who's calling, and sends you exactly what you need to hear.">
+<meta name="theme-color" content="#faf8f4">
 <meta name="robots" content="noindex">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <style>
   :root {
-    --bg: #111a2e;
-    --text: #e8edf7;
-    --muted: #b4bfd6;
+    --bg: #faf8f4;
+    --ink: #111a2e;
+    --body: #333d54;
+    --muted: #586178;
+    --line: #e1dcd1;
+    --photo: #ddd8ce;
     --accent: #4da3ff;
-    --accent-ink: #08101f;
-    --line: #25314d;
+    --accent-text: #1556b5;
+    --head: "Avenir Next", "Montserrat", "Segoe UI", system-ui, sans-serif;
+    --script: "Snell Roundhand", "Apple Chancery", "Segoe Script", "Brush Script MT", cursive;
+    --shadow: 0 10px 30px rgba(17, 26, 46, 0.10);
   }
   * { box-sizing: border-box; }
   html { -webkit-text-size-adjust: 100%; }
   body {
     margin: 0;
-    min-height: 100vh;
-    min-height: 100dvh;
-    display: flex;
-    flex-direction: column;
     background: var(--bg);
-    color: var(--text);
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    line-height: 1.6;
+    color: var(--body);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-size: 18px;
+    line-height: 1.7;
   }
-  header, main, footer { width: 100%; max-width: 64rem; margin: 0 auto; padding-left: 1.5rem; padding-right: 1.5rem; }
-  header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
-  }
-  .brand { display: flex; align-items: baseline; flex-wrap: wrap; gap: 0.5rem; color: var(--text); text-decoration: none; }
-  .brand strong { font-size: 1.35rem; letter-spacing: -0.01em; }
-  .brand em {
-    font-family: "Snell Roundhand", "Apple Chancery", "Segoe Script", "Brush Script MT", cursive;
-    font-size: 1.3rem;
-    font-style: normal;
-    color: var(--accent);
-  }
+  h1, h2, h3 { font-family: var(--head); color: var(--ink); font-weight: 800; line-height: 1.1; letter-spacing: -0.02em; margin: 0; }
+  p { margin: 0; }
+  .wrap { width: 100%; max-width: 1100px; margin: 0 auto; padding-left: 1.5rem; padding-right: 1.5rem; }
+  a:focus-visible, .btn:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; border-radius: 4px; }
+
+  /* Header */
+  .top { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-top: 1.5rem; padding-bottom: 1.5rem; }
+  .brand { display: flex; align-items: baseline; flex-wrap: wrap; column-gap: 0.5rem; color: var(--ink); text-decoration: none; }
+  .brand strong { font-family: var(--head); font-weight: 800; font-size: 1.4rem; letter-spacing: -0.02em; }
+  .brand em { font-family: var(--script); font-style: normal; font-size: 1.4rem; color: var(--accent-text); }
+  .signin { font-weight: 600; color: var(--accent-text); text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 2px; }
+  .signin:hover { color: var(--ink); }
+
   .btn {
     display: inline-block;
-    padding: 0.6rem 1.25rem;
+    padding: 0.9rem 1.9rem;
     border-radius: 999px;
     background: var(--accent);
-    color: var(--accent-ink);
-    font-weight: 600;
+    color: var(--ink);
+    font-family: var(--head);
+    font-weight: 700;
+    font-size: 1.05rem;
     text-decoration: none;
-    white-space: nowrap;
+    box-shadow: var(--shadow);
+    transition: transform .15s ease, box-shadow .15s ease;
   }
-  .btn:hover { filter: brightness(1.1); }
-  a:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
-  main {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding-top: 4rem;
-    padding-bottom: 4rem;
+  .btn:hover { transform: translateY(-2px); box-shadow: 0 14px 34px rgba(17, 26, 46, 0.16); }
+
+  /* Photo containers */
+  .photo { position: relative; overflow: hidden; background: var(--photo); border-radius: 24px; }
+  .photo img { display: block; width: 100%; height: 100%; object-fit: cover; }
+  .photo img.missing { display: none; }
+
+  /* Hero */
+  .hero { display: grid; gap: 2.5rem; padding-top: 2.5rem; padding-bottom: 4.5rem; align-items: center; }
+  .greeting { font-family: var(--head); font-weight: 700; font-size: 1.1rem; color: var(--accent-text); margin-bottom: 1rem; min-height: 1.7em; }
+  .hero h1 { font-size: clamp(2.6rem, 8vw, 4.6rem); margin-bottom: 1.5rem; }
+  .hero .sub { max-width: 34rem; margin-bottom: 2rem; font-size: 1.15rem; }
+  .hero .photo { aspect-ratio: 16 / 9; box-shadow: var(--shadow); }
+
+  /* Sections */
+  section { border-top: 1px solid var(--line); padding-top: 4.5rem; padding-bottom: 4.5rem; }
+  .intro { display: grid; gap: 1.5rem; }
+  .intro h2, .inside h2, .how h2 { font-size: clamp(2rem, 5.5vw, 3.1rem); }
+  .intro p { max-width: 34rem; font-size: 1.15rem; }
+
+  .how h2 { margin-bottom: 2.5rem; }
+  .steps { list-style: none; margin: 0; padding: 0; counter-reset: step; }
+  .steps li { display: grid; grid-template-columns: 3.5rem 1fr; gap: 0.5rem 1rem; padding: 1.75rem 0; border-top: 1px solid var(--line); counter-increment: step; }
+  .steps li:last-child { border-bottom: 1px solid var(--line); }
+  .steps li::before { content: counter(step); font-family: var(--head); font-weight: 800; font-size: 2.6rem; line-height: 1; color: var(--accent-text); }
+  .steps h3 { font-size: 1.5rem; margin-bottom: 0.25rem; }
+
+  /* Photo cards */
+  .cards { display: grid; gap: 1.5rem; padding-top: 0; padding-bottom: 4.5rem; border-top: 0; }
+  .card { aspect-ratio: 4 / 3; box-shadow: var(--shadow); }
+  .card::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(17, 26, 46, 0.88) 0%, rgba(17, 26, 46, 0.55) 40%, rgba(17, 26, 46, 0.05) 75%); }
+  .card h2 { position: absolute; z-index: 1; left: 1.75rem; right: 1.75rem; bottom: 1.75rem; color: #fff; font-size: clamp(1.9rem, 5vw, 2.6rem); }
+
+  /* What's inside */
+  .inside h2 { margin-bottom: 2.5rem; }
+  .features { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
+  .features li { padding: 1.5rem 0; border-top: 1px solid var(--line); }
+  .features h3 { font-size: 1.25rem; margin-bottom: 0.35rem; }
+
+  /* Closing band */
+  .band { background: var(--ink); border-top: 0; text-align: center; color: #e8edf7; }
+  .band h2 { color: #fff; font-size: clamp(2.4rem, 7vw, 4rem); margin-bottom: 2rem; }
+
+  footer { padding-top: 2rem; padding-bottom: 2.5rem; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.5rem 1.5rem; font-size: 0.95rem; color: var(--muted); }
+
+  @media (min-width: 640px) {
+    .cards { grid-template-columns: 1fr 1fr; }
   }
-  h1 {
-    margin: 0 0 1.5rem;
-    max-width: 22ch;
-    font-size: clamp(2rem, 6vw, 3.5rem);
-    line-height: 1.12;
-    letter-spacing: -0.02em;
+
+  /* Wider screens */
+  @media (min-width: 860px) {
+    .hero { grid-template-columns: 1.05fr 1fr; gap: 4rem; padding-top: 4rem; padding-bottom: 6rem; }
+    section { padding-top: 6rem; padding-bottom: 6rem; }
+    .intro { grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem; }
+    .steps li { display: block; border-top: 2px solid var(--ink); padding: 1.5rem 0 0; }
+    .steps li:last-child { border-bottom: 0; }
+    .steps li::before { display: block; margin-bottom: 1rem; }
+    .cards { grid-template-columns: 1fr 1fr; padding-bottom: 6rem; }
+    .features { grid-template-columns: 1fr 1fr; column-gap: 4rem; }
   }
-  .lead { margin: 0 0 3rem; max-width: 40rem; font-size: clamp(1.05rem, 2.5vw, 1.25rem); color: var(--muted); }
-  .features {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.75rem;
+
+  /* Motion: fade-up only when allowed and scripting is on */
+  @media (prefers-reduced-motion: no-preference) {
+    .js .reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
+    .js .reveal.in { opacity: 1; transform: none; }
   }
-  .features li {
-    padding: 0.6rem 1.1rem;
-    border: 1px solid var(--line);
-    border-radius: 999px;
-    font-size: 0.975rem;
+  @media (prefers-reduced-motion: reduce) {
+    .btn { transition: none; }
+    .btn:hover { transform: none; }
   }
-  .features li::before { content: "\2713"; color: var(--accent); font-weight: 700; margin-right: 0.5rem; }
-  footer { padding-top: 1.5rem; padding-bottom: 2rem; text-align: center; color: var(--muted); font-size: 0.9rem; border-top: 1px solid var(--line); }
 </style>
 </head>
 <body>
-<header>
+<header class="wrap top">
   <a class="brand" href="/" aria-label="AuxoIQ with Nicole, home"><strong>AuxoIQ</strong><em>with Nicole</em></a>
-  <a class="btn" href="https://app.auxoiq.com">Sign in</a>
+  <a class="signin" href="https://app.auxoiq.com">Sign in</a>
 </header>
+
 <main>
-  <h1>An assistant that answers your calls and knows who's calling.</h1>
-  <p class="lead">AuxoIQ with Nicole picks up when you can't, greets people by name, takes a clear message, and sends it straight to your phone.</p>
-  <ul class="features">
-    <li>Recognizes the people you know</li>
-    <li>Speaks English and Spanish</li>
-    <li>Sends messages to your phone</li>
-  </ul>
+  <div class="wrap hero">
+    <div>
+      <p class="greeting" id="greeting"></p>
+      <h1>Nicole works hard so you don't.</h1>
+      <p class="sub">AuxoIQ with Nicole answers when you can't, knows who's calling, and sends you exactly what you need to hear, so you can be at the game, on the job, or at the table without the phone.</p>
+      <a class="btn" href="https://app.auxoiq.com">Sign in</a>
+    </div>
+    <div class="photo">
+      <img src="images/hero.jpg" width="1600" height="900" alt="A relaxed person enjoying time away from their phone while an assistant handles the calls">
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap intro reveal">
+      <h2>The call you can't take shouldn't cost you.</h2>
+      <p>You can't be in two places at once. Nicole picks up when you can't, takes a clear message, and sends you a short summary. You decide what's worth a buzz.</p>
+    </div>
+  </section>
+
+  <section class="how">
+    <div class="wrap">
+      <h2 class="reveal">How it works</h2>
+      <ol class="steps reveal">
+        <li>
+          <div>
+            <h3>You miss it.</h3>
+            <p>Calls you can't answer go to Nicole.</p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <h3>She picks up.</h3>
+            <p>She greets people by name and gets the message right.</p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <h3>You hear what matters.</h3>
+            <p>The important ones buzz you. The rest wait quietly.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="cards wrap">
+    <div class="photo card reveal">
+      <img src="images/card-work.jpg" width="1000" height="750" loading="lazy" alt="A tradesperson focused on the job at hand, phone out of sight">
+      <h2>Be where you are.</h2>
+    </div>
+    <div class="photo card reveal">
+      <img src="images/card-home.jpg" width="1000" height="750" loading="lazy" alt="A family sharing a meal at the dinner table">
+      <h2>Dinner is for dinner.</h2>
+    </div>
+  </section>
+
+  <section class="inside">
+    <div class="wrap">
+      <h2 class="reveal">What's inside</h2>
+      <ul class="features reveal">
+        <li><h3>Knows your people</h3><p>Recognizes the numbers you save and greets them the way you would.</p></li>
+        <li><h3>Speaks their language</h3><p>English and Spanish, with a native Spanish voice.</p></li>
+        <li><h3>Every person, their own way</h3><p>Set the tone, greeting and goodbye for family, clients, vendors and more.</p></li>
+        <li><h3>Only what matters buzzes</h3><p>Urgent and family calls alert you right away; everything else arrives as a quiet summary.</p></li>
+        <li><h3>Waiting on someone?</h3><p>Tell Nicole what you need from a specific caller and she'll ask for it and repeat it back.</p></li>
+        <li><h3>Clears the noise</h3><p>Screens spam and hangs up on the numbers you choose.</p></li>
+        <li><h3>Easy to bring your contacts</h3><p>Import from iPhone, Android, Google, Excel or Outlook.</p></li>
+        <li><h3>Clear boundaries</h3><p>She never gives advice, never agrees to anything for you, and always says she's an assistant.</p></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap reveal">
+      <h2>Go live your life.</h2>
+      <a class="btn" href="https://app.auxoiq.com">Sign in</a>
+    </div>
+  </section>
 </main>
-<footer>&copy; AuxoIQ <span id="y">2026</span></footer>
-<script>document.getElementById("y").textContent = new Date().getFullYear();</script>
+
+<footer class="wrap">
+  <span>&copy; AuxoIQ <span id="year">2026</span></span>
+  <span>Private preview.</span>
+</footer>
+
+<script>
+(function () {
+  var d = document, h = new Date().getHours(), g = d.getElementById("greeting");
+  g.textContent = h >= 5 && h <= 11 ? "Good morning." : h >= 12 && h <= 17 ? "Good afternoon." : h >= 18 && h <= 21 ? "Good evening." : "Still up?";
+  d.getElementById("year").textContent = new Date().getFullYear();
+
+  // Hide images that are not there yet so the warm-gray container stands on its own.
+  [].forEach.call(d.querySelectorAll(".photo img"), function (img) {
+    function miss() { img.classList.add("missing"); }
+    if (img.complete && img.naturalWidth === 0) miss(); else img.addEventListener("error", miss);
+  });
+
+  // Subtle fade-up on scroll, only if motion is allowed.
+  var els = d.querySelectorAll(".reveal");
+  if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches && "IntersectionObserver" in window) {
+    d.documentElement.classList.add("js");
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
+    }, { rootMargin: "0px 0px -8% 0px" });
+    [].forEach.call(els, function (el) { io.observe(el); });
+  }
+})();
+</script>
 </body>
 </html>

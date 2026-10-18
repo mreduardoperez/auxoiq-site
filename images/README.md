@@ -1,11 +1,13 @@
 # Images
 
-Add these three files here. The page works without them (warm-gray placeholders), and picks them up automatically once they exist.
+Optimized, web-ready files used by the page (progressive JPEG, metadata stripped):
 
-| File | Shape | Recommended size |
-| --- | --- | --- |
-| `hero.jpg` | 16:9 | 1600px wide |
-| `card-work.jpg` | 4:3 | 1000px wide |
-| `card-home.jpg` | 4:3 | 1000px wide |
+| File | Width |
+| --- | --- |
+| `hero.jpg` | 1920px |
+| `moment-roof.jpg` | 1600px |
+| `moment-meeting.jpg` | 1600px |
+| `card-work.jpg` | 1600px |
+| `card-home.jpg` | 1600px |
 
-Keep each file under 300 KB (JPEG, quality around 75-80).
+Keep each under about 350 KB. Full-size originals live in `images/originals/` (git-ignored, not published).

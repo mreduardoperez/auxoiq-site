@@ -101,7 +101,16 @@
   .steps h3 { color: var(--ink); font-size: 1.5rem; margin-bottom: 0.2rem; }
 
   .list { list-style: none; margin: 2.5rem 0 0; padding: 0; }
-  .list li { padding: 1.1rem 0; border-top: 1px solid var(--line); font-family: var(--head); font-weight: 700; font-size: 1.2rem; color: var(--ink); line-height: 1.3; }
+  .list li { padding: 1.4rem 0; border-top: 1px solid var(--line); }
+  .list h3 { color: var(--ink); font-size: 1.25rem; margin-bottom: 0.3rem; }
+
+  /* Muted "coming soon" lines */
+  .note { color: var(--muted); font-size: 0.95rem; line-height: 1.5; }
+  .scene .copy .note { margin-top: 0.9rem; font-size: 0.95rem; color: #d3d9e6; }
+  .steps .note { margin-top: 0.5rem; }
+
+  /* Bright photos get an extra tint under the overlay */
+  .scene.light { background: linear-gradient(rgba(8, 13, 26, 0.22), rgba(8, 13, 26, 0.22)), var(--navy) var(--img) var(--pos, center) / cover no-repeat; }
 
   /* Closing band */
   .closing { background: var(--ink); color: #fff; text-align: center; padding-top: 7rem; padding-bottom: 7rem; }
@@ -114,12 +123,13 @@
   .hero { --pos: 78% 30%; }
   .roof { --pos: 82% 35%; }
   .meeting { --pos: 30% 30%; }
+  .realtor { --pos: 25% 30%; }
   .work { --pos: 52% 30%; }
   .home { --pos: 72% 30%; }
 
   @media (min-width: 700px) {
     .scene { padding-bottom: 5rem; }
-    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem; }
+    .steps { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2.5rem; }
     .steps li { display: block; border-top: 2px solid var(--ink); padding: 1.5rem 0 0; }
     .steps li:last-child { border-bottom: 0; }
     .steps li::before { display: block; margin-bottom: 1rem; }
@@ -128,8 +138,12 @@
     .hero { --pos: center 30%; }
     .roof { --pos: center 40%; }
     .meeting { --pos: center 30%; }
+    .realtor { --pos: center 30%; }
     .work { --pos: center 30%; }
     .home { --pos: center 35%; }
+  }
+  @media (min-width: 1000px) {
+    .steps { grid-template-columns: repeat(4, 1fr); gap: 2rem; }
   }
   /* Side shading on the text side where the photo is wide */
   @media (min-width: 900px) {
@@ -191,7 +205,18 @@
     <div class="wrap">
       <div class="copy reveal">
         <h2>You're in the meeting.</h2>
-        <p>Your daughter calls. Nicole knows her number, answers warmly, and your phone buzzes right away.</p>
+        <p>Your daughter calls. Nicole answers by name, reminds her that ballet is at 4:30, and tells you she got the message and what she said back.</p>
+        <p class="note">On the way: delivering your messages to callers.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="scene realtor right light" id="realtor" style="--img:url(images/moment-realtor.jpg)">
+    <div class="wrap">
+      <div class="copy reveal">
+        <h2>You're getting a house ready to show.</h2>
+        <p>A buyer calls about the offer. Nicole shares your update and passes the buyer's answer straight to you. She never agrees to anything for you.</p>
+        <p class="note">On the way: delivering your messages to callers.</p>
       </div>
     </div>
   </section>
@@ -229,6 +254,7 @@
         <li><div><h3>You miss it.</h3><p>Calls you can't answer go to Nicole.</p></div></li>
         <li><div><h3>She picks up.</h3><p>She gets the message right.</p></div></li>
         <li><div><h3>You hear what matters.</h3><p>The important ones buzz you. The rest wait quietly.</p></div></li>
+        <li><div><h3>You stay in the loop.</h3><p>Tell Nicole what you're waiting to hear from someone, and she'll ask for it when they call.</p><p class="note">Soon: leave a message for them, too.</p></div></li>
       </ol>
     </div>
   </section>
@@ -237,12 +263,18 @@
     <div class="wrap reveal">
       <h2>Everything else, quietly handled</h2>
       <ul class="list">
-        <li>Knows the people you know</li>
-        <li>English and Spanish</li>
-        <li>Your tone for every kind of caller</li>
-        <li>Only what matters buzzes</li>
-        <li>Spam screened and numbers you choose blocked</li>
-        <li>Easy to bring your contacts</li>
+        <li><h3>Knows your people</h3><p>Recognizes the numbers you save and greets them the way you would.</p></li>
+        <li><h3>Sounds right for everyone</h3><p>You set the tone for family, clients, vendors and more.</p></li>
+        <li><h3>Asks for what you're waiting on</h3><p>Tell her what you need from a specific person and she asks for it and repeats it back.</p></li>
+        <li><h3>Several calls at once</h3><p>Nobody gets a busy signal while you're busy.</p></li>
+        <li><h3>English and Spanish</h3><p>With a native Spanish voice.</p></li>
+        <li><h3>Only what matters buzzes</h3><p>Urgent and family calls find you right away; the rest wait as a quiet summary.</p></li>
+        <li><h3>A note on every call</h3><p>Who called, what they said, and whether they need you back.</p></li>
+        <li><h3>Keeps the noise out</h3><p>Screens spam and hangs up on the numbers you choose.</p></li>
+        <li><h3>Your phone number stays yours</h3><p>She only answers when you can't.</p></li>
+        <li><h3>Easy to start</h3><p>Bring your contacts in from iPhone, Android, Google, Excel or Outlook.</p></li>
+        <li><h3>Honest about who she is</h3><p>She always says she's your assistant, never gives advice, and never agrees to anything for you.</p></li>
+        <li><h3>Delivers your messages</h3><p>Leave a note for someone and Nicole passes it on when they call. <span class="note">On the way.</span></p></li>
       </ul>
     </div>
   </section>

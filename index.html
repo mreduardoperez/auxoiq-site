@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AuxoIQ with Nicole</title>
+<meta name="description" content="AuxoIQ with Nicole answers your calls, greets people by name, takes a clear message, and sends it straight to your phone.">
+<meta name="theme-color" content="#111a2e">
+<meta name="robots" content="noindex">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<style>
+  :root {
+    --bg: #111a2e;
+    --text: #e8edf7;
+    --muted: #b4bfd6;
+    --accent: #4da3ff;
+    --accent-ink: #08101f;
+    --line: #25314d;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.6;
+  }
+  header, main, footer { width: 100%; max-width: 64rem; margin: 0 auto; padding-left: 1.5rem; padding-right: 1.5rem; }
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
+  .brand { display: flex; align-items: baseline; flex-wrap: wrap; gap: 0.5rem; color: var(--text); text-decoration: none; }
+  .brand strong { font-size: 1.35rem; letter-spacing: -0.01em; }
+  .brand em {
+    font-family: "Snell Roundhand", "Apple Chancery", "Segoe Script", "Brush Script MT", cursive;
+    font-size: 1.3rem;
+    font-style: normal;
+    color: var(--accent);
+  }
+  .btn {
+    display: inline-block;
+    padding: 0.6rem 1.25rem;
+    border-radius: 999px;
+    background: var(--accent);
+    color: var(--accent-ink);
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .btn:hover { filter: brightness(1.1); }
+  a:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+  main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+  h1 {
+    margin: 0 0 1.5rem;
+    max-width: 22ch;
+    font-size: clamp(2rem, 6vw, 3.5rem);
+    line-height: 1.12;
+    letter-spacing: -0.02em;
+  }
+  .lead { margin: 0 0 3rem; max-width: 40rem; font-size: clamp(1.05rem, 2.5vw, 1.25rem); color: var(--muted); }
+  .features {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+  }
+  .features li {
+    padding: 0.6rem 1.1rem;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    font-size: 0.975rem;
+  }
+  .features li::before { content: "\2713"; color: var(--accent); font-weight: 700; margin-right: 0.5rem; }
+  footer { padding-top: 1.5rem; padding-bottom: 2rem; text-align: center; color: var(--muted); font-size: 0.9rem; border-top: 1px solid var(--line); }
+</style>
+</head>
+<body>
+<header>
+  <a class="brand" href="/" aria-label="AuxoIQ with Nicole, home"><strong>AuxoIQ</strong><em>with Nicole</em></a>
+  <a class="btn" href="https://app.auxoiq.com">Sign in</a>
+</header>
+<main>
+  <h1>An assistant that answers your calls and knows who's calling.</h1>
+  <p class="lead">AuxoIQ with Nicole picks up when you can't, greets people by name, takes a clear message, and sends it straight to your phone.</p>
+  <ul class="features">
+    <li>Recognizes the people you know</li>
+    <li>Speaks English and Spanish</li>
+    <li>Sends messages to your phone</li>
+  </ul>
+</main>
+<footer>&copy; AuxoIQ <span id="y">2026</span></footer>
+<script>document.getElementById("y").textContent = new Date().getFullYear();</script>
+</body>
+</html>

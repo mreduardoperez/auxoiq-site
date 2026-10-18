@@ -378,7 +378,7 @@
 <script>
 (function () {
   var d = document, now = new Date(), h = now.getHours();
-  d.getElementById("greeting").textContent = h >= 5 && h <= 11 ? "Good morning." : h >= 12 && h <= 17 ? "Good afternoon." : h >= 18 && h <= 21 ? "Good evening." : "Still up?";
+  d.getElementById("greeting").textContent = h >= 5 && h <= 11 ? "Good morning." : h >= 12 && h <= 17 ? "Good afternoon." : "Good evening.";
   d.getElementById("year").textContent = now.getFullYear();
 
   // Header turns solid navy once the page is scrolled.
